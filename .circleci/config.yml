@@ -2,7 +2,7 @@
 version: 2.1
 
 jobs:
-  save_inventory:
+  cache_inventory:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -10,8 +10,18 @@ jobs:
       - save_cache:
           paths: [inventory]
           key: inventory_file
+    
+  workspace_inventory:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - persists_to_workspace:
+          root: ~/
+          paths:
+            - inventory
 
 workflows:
   my_workflow:
     jobs:
-      - save_inventory
+      - cache_inventory
