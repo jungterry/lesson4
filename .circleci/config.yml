@@ -10,3 +10,8 @@ jobs:
       - save_cache:
           paths: [inventory]
           key: inventory_file
+
+workflow:
+  my_workflow:
+    jobs:
+      - save_inventory
