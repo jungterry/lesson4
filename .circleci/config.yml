@@ -10,7 +10,15 @@ jobs:
       - save_cache:
           paths: [inventory]
           key: inventory_file
-    
+
+  restore_inventory_cache:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: inventory_file
+
   workspace_inventory:
     docker:
       - image: circleci/node:13.8.0
@@ -26,4 +34,6 @@ workflows:
   my_workflow:
     jobs:
       - cache_inventory
+      - restore_inventory_cache:
+          requires: [cache_inventory]
       - workspace_inventory
