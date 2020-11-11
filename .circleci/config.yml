@@ -17,7 +17,7 @@ jobs:
     steps:
       - checkout
       - persist_to_workspace:
-          root: ~/
+          root: lesson4/
           paths:
             - inventory
 
