@@ -25,3 +25,4 @@ workflows:
   my_workflow:
     jobs:
       - cache_inventory
+      - workspace_inventory
