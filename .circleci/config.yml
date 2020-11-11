@@ -14,10 +14,11 @@ jobs:
   workspace_inventory:
     docker:
       - image: circleci/node:13.8.0
+    working_directory: ~/lesson4
     steps:
       - checkout
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths:
             - inventory
 
