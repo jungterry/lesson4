@@ -30,6 +30,15 @@ jobs:
           paths:
             - inventory
 
+  attach_inventory_workspace:
+    docker:
+      - image: circleci/node:13.8.0
+    working_directory: ~/lesson4
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/lesson4
+
 workflows:
   my_workflow:
     jobs:
@@ -37,3 +46,5 @@ workflows:
       - restore_inventory_cache:
           requires: [cache_inventory]
       - workspace_inventory
+      - attach_inventory_workspace:
+          requires: [workspace_inventory]
