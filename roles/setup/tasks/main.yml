@@ -5,6 +5,6 @@
     update_cache: yes
 
 - name: "upgrade packages"
-  become: tyes
+  become: yes
   apt:
     upgrade: yes
